@@ -1,3 +1,6 @@
+import static org.junit.Assert.assertEquals; 
+import org.junit.Test;
+
 package main
 
 class Main {
