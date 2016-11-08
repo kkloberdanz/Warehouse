@@ -1,6 +1,5 @@
-
 public class charger {
-	public charger(){
-		
-	}
+	boolean occupied;
+	int xCharLoc;
+	int yCharLoc;
 }
