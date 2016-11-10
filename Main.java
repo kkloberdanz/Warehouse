@@ -1,10 +1,22 @@
-package main; 
+/**
+ * @author Kyle Kloberdanz
+ * Controls the opperations of the entire warehouse
+ */
+
+package warehouse; 
 
 class Main {
+
+    /**
+     * @author Kyle Kloberdanz
+     * Sends a tick with the current count to each section of
+     * the ware house. Each section utilizes these ticks to keep
+     * synchronized with eachother.
+     */
     public static void main(String[] args) { 
 
         // No visualizer yet
-        Floor     floor     = new Floor();
+        //Floor     floor     = new Floor();
         Inventory inventory = new Inventory();
         Orders    orders    = new Orders();
         Belt      belt      = new Belt();
