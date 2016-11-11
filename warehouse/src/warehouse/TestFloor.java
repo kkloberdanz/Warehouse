@@ -16,6 +16,8 @@ public class TestFloor {
     /**
      * @param args the command line arguments
      */
+	
+	
     static MockFloor floor;
     static Point p;
     static Shelf s;
