@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 
-public class Belt {
+public class Belt implements Tick{
 	
 	ArrayList<Integer> belt = new ArrayList<Integer>(10);
 	ArrayList<Integer> ship = new ArrayList<Integer>();
@@ -35,9 +35,8 @@ public class Belt {
 		}
 	}
 	
-	public int Tick(){
-		tick = tick +1;
-		return tick;
+	public void tick(int x){
+		
 	}
 
 }
