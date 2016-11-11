@@ -1,4 +1,4 @@
-package orders;
+package warehouse;
 
 import java.util.ArrayList;
 

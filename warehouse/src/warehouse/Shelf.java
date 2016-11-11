@@ -3,18 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package warehouse;
 
-
+import java.awt.Point;
 import java.util.HashMap;
 
 
 public class Shelf {
 	HashMap<Item,Integer> contents;
 	boolean beingCarried;
-	int xLoc;
-	int yLoc;
-	public Shelf(){
+	Point shelfLoc;
+	public Shelf(Point point, boolean bool){
 		contents = new HashMap<>();
+                shelfLoc=point;
+                beingCarried=bool;
 	}
 	public void addItem(Item I,int num){
 		if (contents.containsKey(I)){
@@ -32,7 +34,10 @@ public class Shelf {
 		beingCarried = carried;		
 	}
 	public void setLoc(int x, int y){
-		xLoc = x;
-		yLoc = y;
+		shelfLoc.setLocation(x,y);
 	}
+        @Override
+        public String toString(){
+            return shelfLoc.toString()+","+ Boolean.toString(beingCarried);
+        }
 }
