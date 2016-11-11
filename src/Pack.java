@@ -1,4 +1,4 @@
-package belt;
+package warehouse;
 
 public class Pack {
 
