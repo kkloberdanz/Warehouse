@@ -1,4 +1,3 @@
-package warehouse;
 import java.util.*;
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,54 +9,74 @@ import java.util.*;
  *
  * @author george
  */
-public class Inventory {
-    String item;
-    int id;
+public class Inventory extends Shelf{
+    Item item;
     int size;
     int weight;
     int quantity;
     HashMap<Integer,Inventory> database;
     Boolean reachcapacity=false;
-    public Inventory(String item,int id,int size,int weight,int quantity){
+    /**
+     * constructor of Inventory
+     * @author haoyang Wei
+     */
+    public Inventory(Item item,int size,int weight,int quantity){
         this.item=item;
-        this.id=id;
         this.size=size;
         this.weight=weight;
         this.quantity=quantity;
     }
-    public void initialize(String[] item,int[] id,int[] size,int[] weight,int[] quantity){
+    /**
+     * initial the database and add the items into database
+     * @author haoyang wei
+     */
+    public void initialize(Item[] item,int[] size,int[] weight,int[] quantity){
+        database=new HashMap<Integer,Inventory>();
        for(int i=0;i<item.length;i++){
-           Inventory initial=new Inventory(item[i],id[i],size[i],weight[i],quantity[i]);
+           Inventory initial=new Inventory(item[i],size[i],weight[i],quantity[i]);
            additem(initial);
            putitemonshelf(initial);
        }
-    }
-    public void additem(Inventory item){
-        if(database.containsKey(item.id)){
-            database.get(item.id).quantity+=item.quantity;
+    }/*
+    *add item to the database, if exists we only need to add the quantity,then put the product onto shelf
+    *@author haoyang wei
+    */
+    public void additem(Inventory product){
+        if(database.containsKey(product.item.get_id_number())){
+            database.get(product.item.get_id_number()).quantity+=item.quantity;
+            putitemonshelf(product.item);
         }
         else{
-            database.put(item.id,item);
+            database.put(product.item.get_id_number(),product);
+            putitemonshelf(product.item);
         }
     }
-    public void putitemonshelf(Inventory item){
+    public void putitemonshelf(Inventory product){
+        addItem(product.item,product.quantity);
                                     
     }
-    public void removeitem(Inventory item){
-        if(!database.containsKey(item.id)){
+    /*remove item from shelf, first check whether we have enough in stock, if not we cannot remove it.
+    @author haoyang wei
+    */
+    public void removeitem(Inventory product){
+        if(!database.containsKey(product.item.get_id_number())){
             System.out.println("We don't have this product in stock");
         }
         else{
-            if(database.get(item.id).quantity<item.quantity){
+            if(database.get(product.item.get_id_number()).quantity<item.quantity){
                 System.out.println("We don't have enough products in stock, please add more products or reduce the number of products to be shippped");
             }
             else{
-                database.get(item.id).quantity-=item.quantity;
+                removeitemfromshelf(product);
+                database.get(product.item.get_id_number()).quantity-=item.quantity;
+                if(database.get(product.item.get_id_number()).quantity==0){
+                    database.remove(product.item.get_id_number());
+                }
             }
         }
     }
-    public void removeitemonshelf(Inventory item){
-        
+    public void removeitemfromshelf(Inventory product){
+        removeItem(product.item);
     }
     
     public static void main(String[] args) {
