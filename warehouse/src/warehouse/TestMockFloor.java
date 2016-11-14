@@ -36,7 +36,7 @@ public class TestMockFloor {
 		MockFloor floor = new MockFloor();
         ArrayList<Point> arr = new ArrayList(floor.getChargers());
         for (Point p : arr) {
-            assertTrue(p > 0);
+            assertTrue((p.getY > 0) && (p.getX > 0));
         }
     }
 }
