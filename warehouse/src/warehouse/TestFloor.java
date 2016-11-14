@@ -19,13 +19,13 @@ public class TestFloor {
 	
 	
     static MockFloor floor;
-    static Point p;
+    static Point p:
     static Shelf s;
     public static void main(String[] args) {
         floor = new MockFloor();
-        p= new Point(1,1);s= new Shelf(p,true);floor.shelves.add(s);
-        p= new Point(1,2);s= new Shelf(p,false);floor.shelves.add(s);
-        p= new Point(2,2);s= new Shelf(p,true);floor.shelves.add(s);
+        p= new Point(1,1);s= new Shelf(p,true,10);floor.shelves.add(s);
+        p= new Point(1,2);s= new Shelf(p,false,10);floor.shelves.add(s);
+        p= new Point(2,2);s= new Shelf(p,true,10);floor.shelves.add(s);
         for (Shelf s:floor.shelves){
             System.out.println(s.toString());
         }

@@ -13,10 +13,12 @@ public class Shelf {
 	HashMap<Item,Integer> contents;
 	boolean beingCarried;
 	Point shelfLoc;
-	public Shelf(Point point, boolean bool){
+	int capacity;
+	public Shelf(Point point, boolean bool, int Int){
 		contents = new HashMap<>();
                 shelfLoc=point;
                 beingCarried=bool;
+                capacity = Int;
 	}
 	public void addItem(Item I,int num){
 		if (contents.containsKey(I)){
