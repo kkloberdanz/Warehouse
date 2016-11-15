@@ -6,7 +6,18 @@ import java.util.ArrayList;
 
 
 public interface Floor {
+	/**
+	 * this function will set the used locations
+	 */
     void setUsedLocations();
+    /**
+     * this will return a path from point A to point B
+     * It currently is a very simple version, and  just moves along the x axis and then the y axis
+     * @param Point A
+     * @param Point B
+     * @return Path
+     */
+    Path makePath(Point A, Point B, boolean flag);
     /**
      * This Function will return true if the location passed is occupied
      * @param loc

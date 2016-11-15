@@ -7,16 +7,20 @@ package warehouse;
 import java.awt.Point;
 import java.util.ArrayList;
 
-public class MockFloor implements Floor{
-    final Point picker = new Point(0,10);
-    final Point packer = new Point(0,150);
-    final Point shippingDock = new Point(0,0);
-    final Point receivingDock = new Point(80,0);
-    final int x_dimension = 160;
-    final int y_dimension = 200;
+public class MockFloor implements Floor, Tick{
+    final Point picker = new Point(0,0);
+    final Point packer = new Point(5,0);
+    final Point shippingDock = new Point(0,12);
+    final Point receivingDock = new Point(9,13);
+    final int x_dimension = 10;
+    final int y_dimension = 14;
     ArrayList<charger> chargers= new ArrayList<>();;
     ArrayList<Point> usedLocations= new ArrayList<>();;
     ArrayList<Shelf> shelves= new ArrayList<>();
+    
+    final Point topLeftShelfArea = new Point(4,4);
+    final Point bottomRightShelfArea = new Point(5,8);
+    
 
     /**
      *This Function will set the currently used locations by objects in the area. 
@@ -33,6 +37,53 @@ public class MockFloor implements Floor{
         usedLocations.add(packer);
         usedLocations.add(shippingDock);
         usedLocations.add(receivingDock);
+    }
+    /**
+     * this will return a path from point A to point B
+     * It currently is a very simple version, and  just moves along the x axis and then the y axis
+     * @param Point A
+     * @param Point B
+     * @return Path
+     */
+    public Path makePath(Point A, Point B, boolean flag){
+    	int xCurr=A.x;
+    	int yCurr=A.y;
+    	boolean lorrX;
+    	boolean lorrY;
+    	if((B.x-A.x)<0){
+    		lorrX=true;
+    	}else{
+    		lorrX=false;
+    	}
+    	if((B.y-A.y)<0){
+    		lorrY=true;
+    	}else{
+    		lorrY=false;
+    	}
+    	Path fPath = null;
+    	Point temp;
+    	boolean trueForY = flag;
+    	if(xCurr==B.x){
+    		trueForY=true;   
+    	}
+    	if (A.x==B.x && A.y==B.y){
+    		return new Path(A,null);
+    	}else if(!trueForY){
+    		if(lorrX){
+    			temp = new Point(xCurr-1,yCurr);
+    		}else{
+    			temp = new Point(xCurr+1,yCurr);
+    		}
+    		fPath = new Path(A,makePath(temp,B,trueForY));
+    	}else if (trueForY){
+    		if(lorrY){
+    			temp = new Point(xCurr,yCurr-1);
+    		}else{
+    			temp = new Point(xCurr,yCurr+1);
+    		}
+    		fPath = new Path(A,makePath(temp,B,trueForY));
+    	}
+		return fPath;
     }
     /**
      * This function returns the picker location
@@ -70,6 +121,7 @@ public class MockFloor implements Floor{
         }
         return Temp;
     }
+
     /**
      * This Function will return true if the location passed is occupied
      * @param loc
@@ -78,5 +130,10 @@ public class MockFloor implements Floor{
     @Override
     public boolean isSpaceOccupied(Point loc){
         return (usedLocations.contains(loc));
+    }
+    /**
+     * This implements Tick
+     */
+    public void tick(int count){
     }
 }
