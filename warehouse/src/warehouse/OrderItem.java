@@ -6,7 +6,7 @@ package warehouse;
  *
  */
 
-public class OrderItem extends Item implements Tickable {
+public class OrderItem extends Item implements Tick {
 	boolean inBin;
 	
 	// This is a subtype of the Item object that

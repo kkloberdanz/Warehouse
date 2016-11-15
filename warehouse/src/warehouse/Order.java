@@ -8,7 +8,7 @@ import java.util.ArrayList;
  *
  */
 
-public class Order implements Tickable {
+public class Order implements Tick {
 	
 	String orderAddress;
 	OrderItem[] orderItems;
