@@ -22,7 +22,7 @@ class Main {
         Inventory inventory = new Inventory();
         Orders    orders    = new Orders();
         Belt      belt      = new Belt();
-        Robot     robot     = new Robot();
+        Robot     robot     = new Robot(100, 1);
 
         for (int i = 0;; ++i) {
             floor.tick(i);
