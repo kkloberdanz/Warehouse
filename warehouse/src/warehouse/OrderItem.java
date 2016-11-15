@@ -19,7 +19,7 @@ public class OrderItem extends Item {
 	}
 	
 	public OrderItem(Item N){
-		this(N.get_id_number(), N.get_name())
+		this(N.get_id_number(), N.get_name());
 	}
 	
 	public boolean filled() {return inBin; }
