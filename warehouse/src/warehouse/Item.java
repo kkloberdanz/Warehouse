@@ -1,3 +1,8 @@
+/**
+ * @author Kyle Kloberdanz
+ *
+ * Please let me know if you need more methods or fields for this class
+ */
 package warehouse;
 
 public class Item {
