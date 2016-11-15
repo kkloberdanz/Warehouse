@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.awt.Point;
+import java.util.ArrayList;
 
 public class TestMockFloor {
 
@@ -36,7 +37,7 @@ public class TestMockFloor {
 		MockFloor floor = new MockFloor();
         ArrayList<Point> arr = new ArrayList(floor.getChargers());
         for (Point p : arr) {
-            assertTrue((p.getY > 0) && (p.getX > 0));
+            assertTrue((p.getY() > 0) && (p.getX() > 0));
         }
     }
 }
