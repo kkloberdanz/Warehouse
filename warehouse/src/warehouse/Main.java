@@ -18,11 +18,11 @@ class Main {
     public static void main(String[] args) { 
 
         // No visualizer yet
-        //Floor     floor     = new Floor();
+        MockFloor     floor = new MockFloor();
         Inventory inventory = new Inventory();
         Orders    orders    = new Orders();
         Belt      belt      = new Belt();
-        Robot     robot     = new Robot();
+        Robot     robot     = new Robot(100, 1);
 
         for (int i = 0;; ++i) {
             floor.tick(i);

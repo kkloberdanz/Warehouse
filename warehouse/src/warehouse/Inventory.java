@@ -1,3 +1,5 @@
+package warehouse;
+
 import java.util.*;
 /*
  * To change this license header, choose License Headers in Project Properties.
