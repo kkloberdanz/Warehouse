@@ -22,6 +22,12 @@ public class Inventory extends Shelf{
      * constructor of Inventory
      * @author haoyang Wei
      */
+    public Inventory(){
+        this.item=null;
+        this.size=0;
+        this.weight=0;
+        this.quantity=0;
+    }
     public Inventory(Item item,int size,int weight,int quantity){
         this.item=item;
         this.size=size;
