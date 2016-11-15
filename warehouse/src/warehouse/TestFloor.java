@@ -19,7 +19,7 @@ public class TestFloor {
 	
 	
     static MockFloor floor;
-    static Point p:
+    static Point p;
     static Shelf s;
     public static void main(String[] args) {
         floor = new MockFloor();
