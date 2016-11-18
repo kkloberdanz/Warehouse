@@ -20,11 +20,11 @@ public interface RobotScheduler {
     /**
      * find an available robot which is not used and in the best location with available charge
      */
-    void findAvailableRobot();
+    boolean findAvailableRobot();
     /**
      * charge robot
      */
-    void chargeRobot();
+    void chargeRobot(Robot a);
     /**
      * 
      */
